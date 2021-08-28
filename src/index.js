@@ -2,11 +2,24 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
+import Auth from './Auth';
 import reportWebVitals from './reportWebVitals';
+import {getCookie} from './cookies';
+
+
+const loggedIn = getCookie("user-dod");
+console.log(loggedIn)
+const user = loggedIn ? JSON.parse(loggedIn):{name: "John"};
+
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    {loggedIn? 
+      <App user={user}/>
+    :
+      <Auth/>
+    }    
   </React.StrictMode>,
   document.getElementById('root')
 );
