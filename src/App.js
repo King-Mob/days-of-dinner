@@ -7,7 +7,7 @@ const App = ({user}) => {
   const [loaded, setLoaded] = useState(false);
 
   const loadDays = async () => {
-    const response = await fetch(`https://days-of-dinner.herokuapp.com/days/${user.id}`);
+    const response = await fetch(`https://days-of-dinner.herokuapp.com/days/user/${user.id}`);
 
     const data = await response.json();
 
