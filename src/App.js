@@ -5,6 +5,9 @@ import {DateTime} from 'luxon';
 const App = ({user}) => {
   const [days, setDays] = useState([]);
   const [loaded, setLoaded] = useState(false);
+  const [more, setMore] = useState(-1);
+
+  console.log(more)
 
   const loadDays = async () => {
     const response = await fetch(`https://days-of-dinner.herokuapp.com/days/user/${user.id}`);
@@ -47,20 +50,33 @@ const App = ({user}) => {
     .then(()=>loadDays());
   }
 
+  let modalActive = more >= 0? "active" : "inactive";
+
   return (
     <div className="App">
+        <div className={"modal " + modalActive}>
+          <h2>More info</h2>
+          <p onClick={()=>setMore(-1)}>close</p>
+        </div>
         <h1>
           Days of Dinner | {user.name}
         </h1>
         {days.map((day,i) => 
+        <div key={i} className="row">
           <div 
-            key={i} 
             className={"day-container " + day.status}
             onClick={()=>changeDay(i)}
           >
              <p>{day.name}</p>
              <p>{day.status}</p>
-          </div>)}
+          </div>
+          <p 
+            className="button in-line"
+            onClick={()=>setMore(i)}
+          >
+            see more
+          </p>
+        </div>)}
     </div>
   );
 }

@@ -22,8 +22,8 @@ p {
 .day-container{
   border-color: white;
   border-style: solid;
-  margin: 5% 25%;
   padding: 2%;
+  width: 40%;
 }
 
 .in {
@@ -37,4 +37,34 @@ p {
 .button {
   text-decoration: underline;
   cursor: pointer;
+}
+
+.row{
+  display: flex;
+    align-content: center;
+    flex-direction: row;
+    align-items: center;
+    margin: 5% 0;
+    justify-content: space-around;
+}
+
+.in-line {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  background-color: white;
+  color: #282c34;
+  width: 60%;
+  top: 25%;
+  left: 20%;
+}
+
+.active {
+  display: inherit;
+}
+
+.inactive {
+  display: none;
 }

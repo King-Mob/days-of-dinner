@@ -13,7 +13,7 @@ const Auth = () => {
 
       if(data.success){
           setCookie("user-dod", JSON.stringify(data.data),900);
-          window.reload();
+          window.location.reload();
       }
     }
     catch(error){
