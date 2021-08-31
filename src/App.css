@@ -49,7 +49,7 @@ p {
 }
 
 .in-line {
-  display: none;
+  display: block;
 }
 
 .modal {
