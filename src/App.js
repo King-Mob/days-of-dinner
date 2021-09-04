@@ -43,7 +43,18 @@ const App = ({user}) => {
 
   const changeDay = (i) => {
     let newDays = Array.from(days);
-    days[i].status = days[i].status === "in"? "out" : "in";
+
+    switch(days[i].status){
+      case "in":
+        newDays[i].status = "back later";
+        break;
+      case "back later":
+        newDays[i].status = "out";
+        break;
+      default:
+        newDays[i].status = "in";
+    }
+
     setDays(newDays);
 
     const request = {
