@@ -8,8 +8,10 @@ const App = ({user}) => {
   const [loaded, setLoaded] = useState(false);
   const [more, setMore] = useState(-1);
 
+  console.log(days)
+
   const loadDays = async () => {
-    const response = await fetch(`https://days-of-dinner.herokuapp.com/days/user/${user.id}`);
+    const response = await fetch(`http://192.168.0.10:4000/days/user/${user.id}`);
 
     const data = await response.json();
 
@@ -81,7 +83,7 @@ const App = ({user}) => {
         className={"day-container " + day.status}
         onClick={()=>changeDay(i)}
       >
-         <p>{day.name}</p>
+         <p>{day.date}</p>
          <p>{day.status}</p>
       </div>
       <p 
@@ -94,7 +96,8 @@ const App = ({user}) => {
 
   if(more >= 0){
     pageContent = <div>
-      <h2>{days[more].name}</h2>
+      <h2>{days[more].date}</h2>
+        {day.length === 0 && <p>loading, please wait</p>}
           {day.map((user,i)=>(
             <p key={i}>{user.name} is {user.status}</p>
           ))}
@@ -107,6 +110,7 @@ const App = ({user}) => {
         <h1>
           Days of Dinner | {user.name}
         </h1>
+        {days.length === 0 && <p>loading, please wait</p>}
         {pageContent}
     </div>
   );
