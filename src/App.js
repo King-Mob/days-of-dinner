@@ -11,7 +11,7 @@ const App = ({user}) => {
   console.log(days)
 
   const loadDays = async () => {
-    const response = await fetch(`http://192.168.0.10:4000/days/user/${user.id}`);
+    const response = await fetch(`https://days-of-dinner.herokuapp.com/days/user/${user.id}`);
 
     const data = await response.json();
 
