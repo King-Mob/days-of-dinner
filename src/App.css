@@ -72,3 +72,18 @@ p {
 .inactive {
   display: none;
 }
+
+.name-container{
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-container{
+  width: 40%;
+}
+
+.name{
+  border-color: white;
+  border-style: solid;
+  padding: 2%;
+}
